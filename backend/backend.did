@@ -1,0 +1,22 @@
+type Time = int;
+type Result_1 = 
+ variant {
+   err: text;
+   ok: text;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok: CallRoom;
+ };
+type CallRoom = 
+ record {
+   createdAt: Time;
+   id: text;
+   participants: nat;
+ };
+service : {
+  createCallRoom: () -> (Result_1);
+  getCallRoom: (text) -> (Result) query;
+  listCallRooms: () -> (vec CallRoom) query;
+}
